@@ -24,7 +24,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
   final TextEditingController _controller = TextEditingController();
   
-  // 2. STATE BARU: Bukan lagi String tunggal, tapi List of Messages
   final List<Message> _messages = []; 
   bool _isLoading = false;
 
@@ -40,7 +39,6 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  // Used to invalidate in-flight async responses on reset
   int _chatVersion = 0;
 
   static const String _welcomeText = 'Hi there! I am SIMY, your AI assistant. How can I help you today?';
@@ -94,13 +92,11 @@ class _ChatScreenState extends State<ChatScreen> {
     final image = _selectedImage;
     if (text.isEmpty && image == null) return;
 
-    // Bersihkan text field langsung biar kerasa responsif
     _controller.clear();
 
     final int versionAtStart = _chatVersion;
 
     setState(() {
-      // Masukkan pesan User ke dalam list
       _messages.add(Message(text: text, isUser: true, image: image, timestamp: DateTime.now()));
       _isLoading = true;
       _selectedImage = null;
@@ -112,7 +108,6 @@ class _ChatScreenState extends State<ChatScreen> {
       GenerateContentResponse response;
 
       if (image != null) {
-        // Logic vision: Send image + text to the model
         final imageBytes = await image.readAsBytes();
         final content = [
           Content.multi([
@@ -122,16 +117,13 @@ class _ChatScreenState extends State<ChatScreen> {
         ];
         response = await model.generateContent(content);
       } else {
-        // Logic text only: Send only text to the model
         final content = [Content.text(text)];
         response = await model.generateContent(content);
       }
 
-      // If user reset chat while we were waiting, discard this response
       if (!mounted || versionAtStart != _chatVersion) return;
 
       setState(() {
-        // Masukkan balasan AI ke dalam list
         _messages.add(Message(
           text: response.text ?? 'Error parsing response.', 
           isUser: false,
@@ -144,7 +136,6 @@ class _ChatScreenState extends State<ChatScreen> {
       _saveChatHistory();
 
     } catch (e) {
-      // If user reset chat while we were waiting, discard this response
       if (!mounted || versionAtStart != _chatVersion) return;
       setState(() {
         _messages.add(Message(text: 'Error: $e', isUser: false, timestamp: DateTime.now()));
@@ -158,7 +149,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Warna background agak abu-abu biar chat bubble menonjol
       backgroundColor: Colors.grey[100], 
       appBar: AppBar(
         title: const Text('SIMY'),
@@ -173,28 +163,23 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       body: Column(
         children: [
-          // 3. UI LIST CHAT (Bagian Paling Penting)
           Expanded(
             child: ListView.builder(
-              // reverse: true supaya chat mulai dari bawah ke atas (kayak WA)
               reverse: true, 
               itemCount: _messages.reversed.length,
               itemBuilder: (context, index) {
-                // Kita ambil data dari list yang dibalik
                 final message = _messages.reversed.toList()[index];
                 return _buildChatBubble(message);
               },
             ),
           ),
           
-          // Indikator Loading kecil di atas input
           if (_isLoading) 
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text("SIMY 💭", style: TextStyle(color: Colors.grey)),
             ),
           
-          // Preview gambar yang dipilih
           if (_selectedImage != null)
             Container(
               padding: const EdgeInsets.all(8.0),
@@ -214,7 +199,6 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
 
-          // 4. INPUT AREA
           Container(
             padding: const EdgeInsets.all(20.0),
             color: Colors.white,
@@ -255,15 +239,12 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  // 5. WIDGET BUBBLE (Logic Kanan/Kiri)
   Widget _buildChatBubble(Message message) {
     return Align(
-      // Kalau user -> Kanan, Kalau AI -> Kiri
       alignment: message.isUser ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         padding: const EdgeInsets.all(12),
-        // Batasi lebar bubble max 75% layar biar ga kepanjangan
         constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
         decoration: BoxDecoration(
           color: message.isUser ? Colors.blueGrey[100] : Colors.white,
@@ -312,7 +293,6 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
               )
-
           ],
         )
         
