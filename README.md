@@ -23,8 +23,7 @@
 
 ## 📸 Screenshots
 <p align="center">
-  <img width="1206" height="2622" alt="Simulator Screenshot - iPhone 16 Pro - 2026-01-10 at 16 20 19" src="https://github.com/user-attachments/assets/9f147245-cb08-496c-9ba7-950430e1531a" />
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 16 Pro - 2026-01-10 at 16 18 38" src="https://github.com/user-attachments/assets/426459e2-251e-432c-b408-0dbd60f2eeff" />
+<img width="300" height="2622" alt="Simulator Screenshot - iPhone 16 Pro - 2026-01-10 at 16 18 38" src="https://github.com/user-attachments/assets/426459e2-251e-432c-b408-0dbd60f2eeff" />
 </p>
 
 ## 🚀 Getting Started
