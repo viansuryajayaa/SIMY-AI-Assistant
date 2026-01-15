@@ -51,5 +51,9 @@
 	<string>Allow camera access to take photos for analysis.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow microphone access for voice input.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>This app requires speech recognition to convert your spoken words into text messages.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app requires microphone access to capture your voice.</string>
 </dict>
 </plist>
