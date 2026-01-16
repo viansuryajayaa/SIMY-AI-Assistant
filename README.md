@@ -4,12 +4,13 @@
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 ![Gemini AI](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=googlebard&logoColor=white)
 
-**SIMY** is a smart AI personal assistant built with Flutter. It integrates the **Google Gemini API** to provide intelligent conversational experiences, multimodal vision capabilities, and local memory management.
+**SIMY** is a smart AI personal assistant built with Flutter. It integrates the **Google Gemini API** to provide intelligent conversational experiences, multimodal vision capabilities, voice interaction, and local memory management.
 
 ## 📱 Key Features
 
 * **🧠 Smart & Responsive:** Powered by the `gemini-2.5-flash` model for fast and accurate responses.
 * **👁️ Multimodal Vision:** Capable of "seeing" and analyzing images uploaded from the gallery or camera.
+* **🗣️ Voice Interaction:** Supports hands-free communication with **Speech-to-Text** (Microphone input) and **Text-to-Speech** (Audio response).
 * **💾 Local Persistence:** Chat history is automatically saved locally on the device using shared preferences, ensuring conversations are never lost.
 * **🎨 Modern UI:** Clean chat interface with full Markdown support (Bold, Code Blocks, Lists) and message timestamps.
 * **🔒 Secure:** API Keys are safely managed using Environment Variables (`.env`).
@@ -18,6 +19,7 @@
 
 * **Frontend:** Flutter & Dart (Cross-platform iOS & Android).
 * **AI Core:** Google Generative AI SDK (Gemini).
+* **Voice & Audio:** `speech_to_text` & `flutter_tts`.
 * **Local Storage:** Shared Preferences (JSON serialization).
 * **State Management:** Native `setState` (Clean Architecture & Separation of Concerns).
 
