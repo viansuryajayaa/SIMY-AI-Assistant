@@ -24,9 +24,9 @@
 ## 📸 Screenshots
 <p align="center">
 
-<img width="1206" height="2622" alt="SIMY_3" src="https://github.com/user-attachments/assets/048637e9-6101-42ac-a2fa-471412bbdfdd" />
-<img width="1206" height="2622" alt="SIMY_2" src="https://github.com/user-attachments/assets/7538edec-c07a-43a0-93e0-a263dbcd3572" />
-<img width="1206" height="2622" alt="SIMY_1" src="https://github.com/user-attachments/assets/bad0a1ea-7b65-4292-8a31-093256127e5c" />
+<img width="259" alt="SIMY_3" src="https://github.com/user-attachments/assets/048637e9-6101-42ac-a2fa-471412bbdfdd" />
+<img width="250" alt="SIMY_2" src="https://github.com/user-attachments/assets/7538edec-c07a-43a0-93e0-a263dbcd3572" />
+<img width="250" alt="SIMY_1" src="https://github.com/user-attachments/assets/bad0a1ea-7b65-4292-8a31-093256127e5c" />
 
 </p>
 
